@@ -2,10 +2,12 @@
 	"description": "Redirects you to Amazon Smile.",
 	"manifest_version": 2,
 	"name": "Smileify",
+	"author": "William Barkoff, Whiskey Bravo Inc.",
 	"version": "1.0",
-	"homepage_url": "https://github.com/willbarkoff/smileify",
+	"homepage_url": "https://github.com/whiskeybrav/smileify",
 	"icons": {
-		"48": "icons/border-48.png"
+		"48": "icons/icon.svg",
+		"96": "icons/icon.svg"
 	},
 	"content_scripts": [
 		{
