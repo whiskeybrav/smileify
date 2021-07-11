@@ -1,0 +1,23 @@
+{
+	"description": "Redirects you to Amazon Smile.",
+	"manifest_version": 2,
+	"name": "Smileify",
+	"version": "1.0",
+	"homepage_url": "https://github.com/willbarkoff/smileify",
+	"icons": {
+		"48": "icons/border-48.png"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://www.amazon.com/*"
+			],
+			"js": [
+				"smileify.js"
+			],
+			"css": [
+				"smileify.css"
+			]
+		}
+	]
+}
