@@ -1,62 +1,79 @@
-(() => {
-	if (document.cookie.includes("smileify-today=no")) {
-		return;
-	}
+try {
+	(() => {
+		// setup
+		const errListener = window.addEventListener('error', (event) => {
+			alert(1)
+			console.log(event)
+		});
 
-	let makeButton = (text, primary, onClick) => {
-		let button = document.createElement("span")
-		button.classList.add("a-button", "a-button-base")
-		if (primary) {
-			button.classList.add("a-button-primary")
-		}
+		(() => {
+			if (document.cookie.includes("smileify-today=no")) {
+				window.onerror = oldOnError;
+			}
 
-		let buttonInner = document.createElement("span")
-		buttonInner.classList.add("a-button-inner")
+			let makeButton = (text, primary, onClick) => {
+				let button = document.createElement("span")
+				button.classList.add("a-button", "a-button-base")
+				if (primary) {
+					button.classList.add("a-button-primary")
+				}
 
-		let buttonText = document.createElement("a")
-		buttonText.classList.add("a-button-text")
-		buttonText.addEventListener("click", onClick)
-		buttonText.innerText = text
+				let buttonInner = document.createElement("span")
+				buttonInner.classList.add("a-button-inner")
 
-		buttonInner.append(buttonText)
-		button.append(buttonInner)
+				let buttonText = document.createElement("a")
+				buttonText.classList.add("a-button-text")
+				buttonText.addEventListener("click", onClick)
+				buttonText.innerText = text
 
-		return button;
-	}
+				buttonInner.append(buttonText)
+				button.append(buttonInner)
 
-	let goToSmile = () => {
-		let currentLocation = document.location.href
-		document.location.href = currentLocation.replace("www", "smile")
-	}
+				return button;
+			}
 
-	let ignoreSmile = () => {
-		document.cookie = "smileify-today=no";
-	}
+			let smile = document.createElement("div")
+			smile.classList.add("smileify")
 
-	let smile = document.createElement("div")
-	smile.classList.add("smileify")
+			let goToSmile = () => {
+				let currentLocation = document.location.href
+				document.location.href = currentLocation.replace("www", "smile")
+			}
 
-	let dialog = document.createElement("div")
-	dialog.classList.add("smile-dialog")
-	smile.append(dialog)
+			let ignoreSmile = () => {
+				document.cookie = "smileify-today=no";
+				smile.remove();
+			}
 
-	let title = document.createElement("h1")
-	title.classList.add("smile-dialog-title")
-	title.textContent = "Go to smile?"
-	dialog.append(title)
+			let dialog = document.createElement("div")
+			dialog.classList.add("smile-dialog")
+			smile.append(dialog)
 
-	let message = document.createElement("div")
-	message.classList.add("smile-dialog-message")
-	message.textContent = "Shopping at smile.amazon.com instead of amazon.com donates money to charity."
-	dialog.append(message)
+			let title = document.createElement("h1")
+			title.classList.add("smile-dialog-title")
+			title.textContent = "Go to smile?"
+			dialog.append(title)
 
-	let buttons = document.createElement("div")
-	buttons.classList.add("smile-buttons")
-	let smileButton = makeButton("Go to smile", true, goToSmile)
-	let closeButton = makeButton("Next time", false, ignoreSmile)
-	buttons.append(smileButton, closeButton)
+			let message = document.createElement("div")
+			message.classList.add("smile-dialog-message")
+			message.textContent = "Shopping at smile.amazon.com instead of amazon.com donates money to charity."
+			dialog.append(message)
 
-	dialog.append(buttons)
+			let smallMessage = document.createElement("small")
+			smallMessage.textContent = "If you click \"next time\", we won't prompt you again until you restart your browser."
+			dialog.append(smallMessage)
 
-	document.body.prepend(smile)
-})();
+			let buttons = document.createElement("div")
+			buttons.classList.add("smile-buttons")
+			let smileButton = makeButton("Go to smile", true, goToSmile)
+			let closeButton = makeButton("Next time", false, ignoreSmile)
+			buttons.append(smileButton, closeButton)
+
+			dialog.append(buttons)
+
+			document.body.prepend(smile)
+		})();
+	})();
+} catch (e) {
+	console.error(e)
+}
