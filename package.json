@@ -1,0 +1,17 @@
+{
+  "name": "smilelify",
+  "version": "1.0.0",
+  "description": "A simple extension that redirects you to Amazon Smile",
+  "main": "smileify.js",
+  "repository": "git@github.com:whiskeybrav/smileify.git",
+  "author": "William Barkoff <william@barkoffusa.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "web-ext": "^6.2.0"
+  },
+  "scripts": {
+    "start:firefox": "web-ext run",
+    "build:firefox": "web-ext build"
+  }
+}
