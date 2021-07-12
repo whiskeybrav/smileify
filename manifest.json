@@ -3,11 +3,13 @@
 	"manifest_version": 2,
 	"name": "Smileify",
 	"author": "William Barkoff, Whiskey Bravo Inc.",
-	"version": "1.0",
-	"homepage_url": "https://github.com/whiskeybrav/smileify",
+	"version": "1.0.0",
+	"homepage_url": "https://whiskeybrav.github.io/smileify",
 	"icons": {
-		"48": "icons/icon.svg",
-		"96": "icons/icon.svg"
+		"32": "icons/32.png",
+		"48": "icons/48.png",
+		"96": "icons/96.png",
+		"128": "icons/128.png"
 	},
 	"content_scripts": [
 		{
