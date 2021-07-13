@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start:firefox": "web-ext run",
-    "build:firefox": "web-ext build"
+    "build:firefox": "web-ext build",
+    "build:chrome": "node ./build-chrome.js"
   }
 }
